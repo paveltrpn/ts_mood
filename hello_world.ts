@@ -3,14 +3,18 @@ function hello_world(print: string) {
     console.log(print);
 }
 
-function show_sieve(sieve: boolean[]) {
-    let i: number = 0;
+function fib(n: number): number[] {
+    let fib: number[] = new Array(n+1);
 
-    for (i = 0; i < sieve.length - 1; i++) {
-        if (sieve[i] == true) {
-            console.log(i);
-        }
+    fib[0] = 0;
+    fib[1] = 1;
+    fib[2] = 1;
+
+    for (let i = 3; i < n; i++) {
+        fib[i] = fib[i-1] + fib[i-2];
     }
+
+    return fib;
 }
 
 function erato_sieve(n: number): boolean[] {
@@ -37,11 +41,23 @@ function erato_sieve(n: number): boolean[] {
 }
 
 function main() {
+    /*
     let sieve: boolean[];
-
     console.log("erato_sieve");
     sieve = erato_sieve(100);
-    show_sieve(sieve);
+    for (let i = 0; i < sieve.length - 1; i++) {
+        if (sieve[i] == true) {
+            console.log(i);
+        }
+    }
+    */
+    
+    let f: number[];
+    console.log("fibonacci");
+    f = fib(15);
+    for (let i in f) {
+        console.log(f[i]);
+    }
 }
 
 main()
