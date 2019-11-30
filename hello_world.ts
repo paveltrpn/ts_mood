@@ -17,6 +17,37 @@ function fib(n: number): number[] {
     return fib;
 }
 
+function mtrx2_mult(a: number[], b: number[]): number[] {
+    let rt: number[] = new Array(4);
+
+    rt[0] = a[0]*b[0] + a[1]*b[2];
+    rt[1] = a[0]*b[1] + a[1]*b[3];
+    rt[2] = a[2]*b[0] + a[3]*b[2];
+    rt[3] = a[2]*b[1] + a[3]*b[3];
+
+    return rt;
+}
+
+function fib_mtrx(n: number): number {
+    const Q: number[] = [1, 1, 1, 0];
+    let M:number[];
+
+    if (n < 2) {
+        return n;
+    }
+   
+    if (n == 2) {
+        return 1;
+    }
+
+    M = Q;
+    for (let i = 0; i < n-2; i++) {
+        M = mtrx2_mult(M, Q);
+    }
+
+    return M[0];
+}
+
 function erato_sieve(n: number): boolean[] {
     let prime: boolean[] = new Array(n+1);
     let j,i: number;
@@ -51,13 +82,14 @@ function main() {
         }
     }
     */
-    
+       
     let f: number[];
     console.log("fibonacci");
     f = fib(15);
-    for (let i in f) {
-        console.log(f[i]);
+    for (let i = 0; i < f.length - 1; i++) {
+        console.log(f[i], " ", fib_mtrx(i));
     }
+    
 }
 
 main()
