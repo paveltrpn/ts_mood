@@ -22,7 +22,7 @@ function usage() {
 }
 
 function check_str(str: string): boolean {
-    let numbers: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    let numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     let flag: boolean;
 
     for (let i = 0; i < str.length; i++) {
@@ -30,8 +30,10 @@ function check_str(str: string): boolean {
         for (let j = 0; j < 10; j++) {
             if (str[i] == numbers[j]) {
                 flag = true;
-                break;
             }
+        }
+        if (flag == false) {
+            return flag;
         }
     }
 
@@ -40,6 +42,7 @@ function check_str(str: string): boolean {
 
 function check_ip(str: string): boolean {
     let ip: string[];
+    let octet: number;
 
     ip = str.split(".");
 
@@ -58,7 +61,14 @@ function check_ip(str: string): boolean {
         if (ip[i][0] == "0") {
             console.log("octet " + (i+1) + " has forward zero");
             return false;
-        } 
+        }
+
+        octet = Number(ip[i]);
+
+        if (octet > 255) {
+            console.log("octet " + (i+1) + " greater than 255");
+            return false;
+        }
     }
 
     return true;
