@@ -1,5 +1,6 @@
 
-/*  Напишите алгортм валидации IPv4 адреса
+/*  
+    Напишите алгортм валидации IPv4 адреса
     в Dot-десятичной нотации.
     IP является валидным, если состоит из
     четырёх октетов, ос значениями от 0 до 255
@@ -15,29 +16,41 @@
     Невалидные:
     1.2.3, 1.2.3.4.5, 123.456.78.90, 123.054.067.089
 
-    Обратите внимание, что запись с ведущими нулями так же невалидна */
+    Обратите внимание, что запись с ведущими нулями так же невалидна
+*/
+
+let numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 function usage() {
     console.log("usage: node ip_test -ip <addr>");
 }
 
-function check_str(str: string): boolean {
-    let numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    let flag: boolean;
-
-    for (let i = 0; i < str.length; i++) {
-        flag = false;
-        for (let j = 0; j < 10; j++) {
-            if (str[i] == numbers[j]) {
-                flag = true;
-            }
-        }
-        if (flag == false) {
-            return flag;
+/*
+    Проверка простым перебором.
+    В Typescript нет типа чар, поэтому просто
+    проверяем первый символ строки.
+    Вообще хорошо бы вставить проеверку на 
+    длину входящей строки, она должна быть 
+    равна 1.
+*/
+function check_set_brute(key: string): boolean {
+    for (let j = 0; j < numbers.length; j++) {
+        if (key[0] == numbers[j]) {
+            return true;
         }
     }
+    return false;
+}
 
-    return flag;
+function check_set_binary(key: string): boolean {
+    return false;
+}
+
+function check_str(str: string): boolean {
+    for (let i = 0; i < str.length; i++) {
+        if (check_set_brute(str)) return true;
+    }
+    return false;
 }
 
 function check_ip(str: string): boolean {
@@ -45,7 +58,7 @@ function check_ip(str: string): boolean {
     let octet: number;
 
     ip = str.split(".");
-
+    
     if (ip.length != 4) {
         console.log("addr is has wrong size!");
         return false;
