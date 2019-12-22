@@ -1,6 +1,6 @@
 
 /*  
-    Напишите алгортм валидации IPv4 адреса
+    Напишите алгоритм валидации IPv4 адреса
     в Dot-десятичной нотации.
     IP является валидным, если состоит из
     четырёх октетов, ос значениями от 0 до 255
@@ -19,20 +19,24 @@
     Обратите внимание, что запись с ведущими нулями так же невалидна
 */
 
-let numbers: string[] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let numbers: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let numbers_set = new Set(n);
 
 function usage() {
     console.log("usage: node ip_test -ip <addr>");
 }
 
 /*
-    Проверка простым перебором.
+    function check_set_brute()
+
+    Проверка вхождения символа в множество простым перебором.
     В Typescript нет типа чар, поэтому просто
     проверяем первый символ строки.
     Вообще хорошо бы вставить проеверку на 
     длину входящей строки, она должна быть 
     равна 1.
 */
+
 function check_set_brute(key: string): boolean {
     for (let j = 0; j < numbers.length; j++) {
         if (key[0] == numbers[j]) {
@@ -42,16 +46,28 @@ function check_set_brute(key: string): boolean {
     return false;
 }
 
+/*
+    function check_set_binary()
+
+    Поиск значения в множестве бинарным поиском.
+    Не реализовано.
+*/
+
 function check_set_binary(key: string): boolean {
     return false;
 }
 
+function check_set_native(key: string): boolean {
+    return numbers_set.has(key[0]); 
+}
+
 function check_str(str: string): boolean {
     for (let i = 0; i < str.length; i++) {
-        if (check_set_brute(str)) return true;
+        if (!check_set_native(str[i])) return false;
     }
-    return false;
+    return true;
 }
+
 
 function check_ip(str: string): boolean {
     let ip: string[];
