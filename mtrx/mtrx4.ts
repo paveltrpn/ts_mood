@@ -1,7 +1,10 @@
 //
 // всё-таки видимо имеет смысл именно так сформировать класс
 // data стала приватной и запись туда невозможна, только по сеттеру
-// 
+//
+
+type mtrx4 = Float32Array(16);
+
 class mtrx4_t {
     // единичная матрица
     constructor () {
@@ -17,7 +20,7 @@ class mtrx4_t {
 	    	}
 	    }
     }
-
+    
     private readonly order: number = 4; 
     private data: number[];
 
