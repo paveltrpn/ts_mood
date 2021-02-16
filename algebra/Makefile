@@ -8,7 +8,7 @@ SRCS = main.ts \
 	   cmplx.ts 
 
 TSC = tsc
-CFLAGS = --strict --target "ES6" --module "commonjs" --noImplicitAny --removeComments --preserveConstEnums
+CFLAGS = --strict --target "ES6" --module "ES6" --noImplicitAny --removeComments --preserveConstEnums
 
 VPATH := $(SOURCE_PREFIX)
 
