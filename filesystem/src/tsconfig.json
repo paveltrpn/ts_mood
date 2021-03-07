@@ -8,5 +8,5 @@
         "preserveConstEnums": true,
         "outDir": "../js/",
         },
-    "files": ["test.ts", "file.ts"]
+    "files": ["test.ts", "file.ts", "range.ts"]
 }
