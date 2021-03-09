@@ -1,6 +1,5 @@
 
 import * as fs from "fs";
-import * as rng from "./range";
 
 export class freadSync {
     public fname: string;
@@ -30,27 +29,4 @@ export class freadSync {
     }
 }
 
-function removePunctuation(str: string): string {
-    return str.replace(/[/.,!?;]*/g, "");
-}
 
-function splitBySpace(str: string): string[] {
-    return str.split(" ");
-}
-
-export function testfreadSync() {
-    console.log("main(): fs test.")
-    console.log( rng.Range.range(0,20,2));
-
-    // let foo: freadSync = new freadSync();
-    // foo.printFileStats("../assets/raven.txt");
-
-    let fileContent = fs.readFileSync("../assets/raven.txt", "utf8")
-    let words = splitBySpace(fileContent);
-
-    // for (let i = 0; i < 5; i++) {
-        // console.log(words[i])
-    // }
-
-    // console.log(removePunctuation(fileContent))
-}
