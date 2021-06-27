@@ -5,7 +5,6 @@ import * as smnp from "./string_mnp";
 
 export function testfreadSync() {
     console.log("main(): fs test.")
-    console.log( rng.Range.range(0,20,2));
 
     // let foo: freadSync = new freadSync();
     // foo.printFileStats("../assets/raven.txt");

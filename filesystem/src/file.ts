@@ -28,5 +28,3 @@ export class freadSync {
         console.log(stats)
     }
 }
-
-
